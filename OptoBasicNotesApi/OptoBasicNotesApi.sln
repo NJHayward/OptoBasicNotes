@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptoBasicNotesApi", "OptoBasicNotesApi\OptoBasicNotesApi.csproj", "{EEFB68E9-870E-4712-ADB9-91639E1D1A50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptoBasicNotesApi.Application", "OptoBasicNotesApi.Application\OptoBasicNotesApi.Application.csproj", "{B797B999-182D-4A08-921A-6B2BBBE44035}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptoBasicNotesApi.Core", "OptoBasicNotesApi.Core\OptoBasicNotesApi.Core.csproj", "{A6DDE1C0-ACBD-432F-8890-EDD048B6664D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{75F668FF-9038-4E48-9E5E-B43D60323637}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEFB68E9-870E-4712-ADB9-91639E1D1A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEFB68E9-870E-4712-ADB9-91639E1D1A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEFB68E9-870E-4712-ADB9-91639E1D1A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEFB68E9-870E-4712-ADB9-91639E1D1A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B797B999-182D-4A08-921A-6B2BBBE44035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B797B999-182D-4A08-921A-6B2BBBE44035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B797B999-182D-4A08-921A-6B2BBBE44035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B797B999-182D-4A08-921A-6B2BBBE44035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6DDE1C0-ACBD-432F-8890-EDD048B6664D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6DDE1C0-ACBD-432F-8890-EDD048B6664D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6DDE1C0-ACBD-432F-8890-EDD048B6664D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6DDE1C0-ACBD-432F-8890-EDD048B6664D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F547BE98-F75A-46B0-A19C-E03E99968AEC}
+	EndGlobalSection
+EndGlobal
