@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OptoBasicNotes.Core.Interfaces;
 using OptoBasicNotes.Models;
 using System.Diagnostics;
 
@@ -7,15 +8,21 @@ namespace OptoBasicNotes.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IOptoBasicNotesApi _notesApi;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IOptoBasicNotesApi notesApi)
         {
             _logger = logger;
+            _notesApi = notesApi;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            throw new Exception("test exception");
+
+            //var test2 = await _notesApi.CreateCategoryAsync("yety another category testasd");
+
+            //var test3 = _notesApi.GetAllCategoriesAsync();
+
             return View();
         }
 

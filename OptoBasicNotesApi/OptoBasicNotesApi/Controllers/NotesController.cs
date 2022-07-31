@@ -136,7 +136,7 @@ namespace OptoBasicNotesApi.Controllers
         /// <returns>OK result</returns>
         [HttpPut]
         [Route("{id}")]
-        public async Task<ActionResult> UpdateNote(int id, CreateUpdateNoteDto noteDto)
+        public async Task<ActionResult<bool>> UpdateNote(int id, CreateUpdateNoteDto noteDto)
         {
             var note = await _noteService.FindByIdAsync(id);
             if (note == null)
@@ -171,7 +171,7 @@ namespace OptoBasicNotesApi.Controllers
 
             await _noteService.Update(note);
 
-            return Ok();
+            return Ok(true);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace OptoBasicNotesApi.Controllers
         /// <returns>Ok result</returns>
         [HttpDelete]
         [Route("{id}")]
-        public async Task<ActionResult> DeleteNote(int id)
+        public async Task<ActionResult<bool>> DeleteNote(int id)
         {
             var note = await _noteService.FindByIdAsync(id);
             if (note == null)
@@ -192,7 +192,7 @@ namespace OptoBasicNotesApi.Controllers
 
             await _noteService.Delete(note);
 
-            return Ok();
+            return Ok(true);
         }
     }
 }

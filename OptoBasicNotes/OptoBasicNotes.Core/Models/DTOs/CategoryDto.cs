@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OptoBasicNotesApi.Application.DTOs
+namespace OptoBasicNotes.Core.Models.DTOs
 {
     public class CategoryDto
     {

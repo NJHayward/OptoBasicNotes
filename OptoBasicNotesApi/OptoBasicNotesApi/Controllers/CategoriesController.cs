@@ -29,7 +29,7 @@ namespace OptoBasicNotesApi.Controllers
         /// </summary>
         /// <returns>a list of the category dtos</returns>
         [HttpGet]
-        public async Task<ActionResult<IList<NoteDto>>> GetAllCategories()
+        public async Task<ActionResult<IList<CategoryDto>>> GetAllCategories()
         {
             var results = await _categoryService.GetAllAsync();
             if (results == null || results.Count == 0)
@@ -40,8 +40,13 @@ namespace OptoBasicNotesApi.Controllers
             return Ok(_mapper.Map<IList<CategoryDto>>(results));
         }
 
+        /// <summary>
+        /// Creates a category witht he given dto
+        /// </summary>
+        /// <param name="createNoteDto">The dto in the body with details of the category to create</param>
+        /// <returns>The category dto</returns>
         [HttpPost]
-        public async Task<ActionResult<NoteDto>> CreateCategory(CreateCategoryDto createNoteDto)
+        public async Task<ActionResult<CategoryDto>> CreateCategory(CreateCategoryDto createNoteDto)
         {
             ///Check for existign category name first before creating the new category. 
             ///   This can preemptivly save errors being produced within SQL.

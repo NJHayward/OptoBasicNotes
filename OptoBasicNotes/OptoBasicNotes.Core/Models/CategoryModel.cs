@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OptoBasicNotesApi.Application.DTOs
+namespace OptoBasicNotes.Core.Models
 {
-    public class CategoryDto
+    public class CategoryModel
     {
         /// <summary>
         /// THe identity id of the Category
