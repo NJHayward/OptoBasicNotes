@@ -28,6 +28,35 @@ namespace OptoBasicNotesApi.Core
             builder.Entity<Category>(entity => {
                 entity.HasIndex(c => c.CategoryName).IsUnique();
             });
+
+            //seed data here as this is a small app
+            builder.Entity<Category>().HasData(
+                new Category
+                {
+                    Id = 1,
+                    CategoryName = "Some category 1"
+                },
+                new Category
+                {
+                    Id = 2,
+                    CategoryName = "Some category 2"
+                },
+                new Category
+                {
+                    Id = 3,
+                    CategoryName = "Some category 3"
+                },
+                new Category
+                {
+                    Id = 4,
+                    CategoryName = "Some category 4"
+                },
+                new Category
+                {
+                    Id = 5,
+                    CategoryName = "Some category 5"
+                }
+            );
         }
     }
 }
