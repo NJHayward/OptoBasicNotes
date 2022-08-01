@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OptoBasicNotes.Core.Interfaces;
 using OptoBasicNotes.Models;
 using System.Diagnostics;
@@ -21,7 +22,7 @@ namespace OptoBasicNotes.Controllers
             var categories = await _notesApi.GetAllCategoriesAsync();
 
             IndexViewModel model = new();
-            model.Categories = categories.Select(x => new System.Web.Mvc.SelectListItem
+            model.Categories = categories.Select(x => new SelectListItem
             {
                 Value = x.Id.ToString(),
                 Text = x.CategoryName
