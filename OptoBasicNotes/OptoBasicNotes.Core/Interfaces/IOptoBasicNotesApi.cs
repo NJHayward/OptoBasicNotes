@@ -28,28 +28,28 @@ namespace OptoBasicNotes.Core.Interfaces
         /// Get all notes
         /// </summary>
         /// <returns>The list of note models</returns>
-        Task<IList<NoteModel>> GetAllNotes();
+        Task<IList<NoteModel>> GetAllNotesAsync();
 
         /// <summary>
         /// Get note by the id parameter
         /// </summary>
         /// <param name="id">The id of the note to find</param>
         /// <returns>The note dto</returns>
-        Task<NoteModel> GetNote(int id);
+        Task<NoteModel> GetNoteAsync(int id);
 
         /// <summary>
         /// Get the note by the id parameter.  will convert any markdown in the note to html.
         /// </summary>
         /// <param name="id">The id of the note to find</param>
         /// <returns>The note dto</returns>
-        Task<NoteModel> GetNoteConvertedMarkdown(int id);
+        Task<NoteModel> GetNoteConvertedMarkdownAsync(int id);
 
         /// <summary>
         /// Creates the note acording the the dto passed in the body
         /// </summary>
         /// <param name="createNoteDto">The dto with the not details to create</param>
         /// <returns>The note dto with updated id values</returns>
-        Task<NoteModel> CreateNote(string noteBody, IList<int> noteCategoryIds);
+        Task<NoteModel> CreateNoteAsync(string noteBody, IList<int> noteCategoryIds);
 
         /// <summary>
         /// Update the note
@@ -57,14 +57,14 @@ namespace OptoBasicNotes.Core.Interfaces
         /// <param name="id">The id of the note to update</param>
         /// <param name="noteDto">The note dto passed via the body containing the information to update</param>
         /// <returns>OK result</returns>
-        Task UpdateNote(int id, string noteBody, IList<int> noteCategoryIds);
+        Task UpdateNoteAsync(int id, string noteBody, IList<int> noteCategoryIds);
 
         /// <summary>
         /// Deleted the note for the given id parameter
         /// </summary>
         /// <param name="id">The id of the note to delete</param>
         /// <returns>Ok result</returns>
-        Task DeleteNote(int id);
+        Task DeleteNoteAsync(int id);
 
         #endregion
     }

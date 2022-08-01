@@ -1,0 +1,32 @@
+﻿@model IList<NotePartialViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" style="width:20%">Categories</th>
+            <th scope="col">
+                Note 
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <th scope="row">@(i + 1)</th>
+                <td>
+                    @foreach(var noteCategory in Model[i].Categories)
+                    {
+                        @noteCategory.CategoryName
+                        <br />
+                    }
+                </td>
+                <td>
+                    @Html.Raw(Model[i].NoteBodyHtml)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

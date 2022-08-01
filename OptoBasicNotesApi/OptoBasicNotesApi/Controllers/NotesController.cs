@@ -42,7 +42,14 @@ namespace OptoBasicNotesApi.Controllers
                 return Ok(new List<NoteDto>());
             }
 
-            return Ok(_mapper.Map<IList<NoteDto>>(results));
+            //Convert markdown here not in mapper as mapper would effect other calls.
+            var mappedResults = _mapper.Map<IList<NoteDto>>(results);
+            foreach (var mappedResult in mappedResults)
+            {
+                mappedResult.NoteBodyHtml = Markdown.ToHtml(mappedResult.NoteBody);
+            }
+
+            return Ok(mappedResults);
         }
 
         /// <summary>

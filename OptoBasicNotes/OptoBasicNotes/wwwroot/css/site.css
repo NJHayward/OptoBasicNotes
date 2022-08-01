@@ -16,3 +16,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#divErrorPanel, #divSuccessCreated {
+    display: none;
+}
+
+#btnCreateNoteForm {
+    padding: 2em;
+}
+
+.createRow {
+    margin-bottom: 2em;
+}

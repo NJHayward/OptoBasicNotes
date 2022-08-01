@@ -38,30 +38,30 @@ namespace OptoBasicNotes.Core.Services
 
         #region Notes 
 
-        public async Task<IList<NoteModel>> GetAllNotes() =>
+        public async Task<IList<NoteModel>> GetAllNotesAsync() =>
             _mapper.Map<List<NoteModel>>(await ExecuteRequestAsync<List<NoteDto>>("/notes", Method.Get));
 
-        public async Task<NoteModel> GetNote(int id) =>
+        public async Task<NoteModel> GetNoteAsync(int id) =>
             _mapper.Map<NoteModel>(await ExecuteRequestAsync<NoteDto>($"/notes/{id}", Method.Get));
 
-        public async Task<NoteModel> GetNoteConvertedMarkdown(int id) =>
+        public async Task<NoteModel> GetNoteConvertedMarkdownAsync(int id) =>
             _mapper.Map<NoteModel>(await ExecuteRequestAsync<NoteDto>($"/notes/{id}/html", Method.Get));
 
-        public async Task<NoteModel> CreateNote(string noteBody, IList<int> noteCategoryIds) =>
+        public async Task<NoteModel> CreateNoteAsync(string noteBody, IList<int> noteCategoryIds) =>
             _mapper.Map<NoteModel>(await ExecuteRequestAsync<NoteDto>("/notes", Method.Post, new CreateUpdateNoteDto
             {
                 NoteBody = noteBody,
                 NoteCategoryIds = noteCategoryIds
             }));
 
-        public async Task UpdateNote(int id, string noteBody, IList<int> noteCategoryIds) =>
+        public async Task UpdateNoteAsync(int id, string noteBody, IList<int> noteCategoryIds) =>
             await ExecuteRequestAsync<bool>($"/notes/{id}", Method.Put, new CreateUpdateNoteDto
             {
                 NoteBody = noteBody,
                 NoteCategoryIds = noteCategoryIds
             });
 
-        public async Task DeleteNote(int id) =>
+        public async Task DeleteNoteAsync(int id) =>
             await ExecuteRequestAsync<bool>($"/notes/{id}", Method.Delete);
 
         #endregion

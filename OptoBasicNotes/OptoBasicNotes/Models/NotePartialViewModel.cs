@@ -1,6 +1,6 @@
-﻿namespace OptoBasicNotes.Core.Models.DTOs
+﻿namespace OptoBasicNotes.Models
 {
-    public class NoteDto
+    public class NotePartialViewModel
     {
         /// <summary>
         /// The identity id of the note
@@ -25,6 +25,14 @@
         /// <summary>
         /// The Not categories linking Notes and Categories
         /// </summary>
-        public IEnumerable<NoteCategoryDto> NoteCategories { get; set; }
+        public IList<NoteCategoryPartialViewModel> Categories { get; set; }
+    }
+
+    public class NoteCategoryPartialViewModel
+    {
+        /// <summary>
+        /// The category name
+        /// </summary>
+        public string CategoryName { get; set; }
     }
 }

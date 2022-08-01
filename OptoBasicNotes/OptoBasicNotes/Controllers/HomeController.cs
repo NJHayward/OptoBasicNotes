@@ -18,12 +18,71 @@ namespace OptoBasicNotes.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var categories = await _notesApi.GetAllCategoriesAsync();
 
-            //var test2 = await _notesApi.CreateCategoryAsync("yety another category testasd");
+            IndexViewModel model = new();
+            model.Categories = categories.Select(x => new System.Web.Mvc.SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.CategoryName
+            }).ToList();
 
-            //var test3 = _notesApi.GetAllCategoriesAsync();
 
-            return View();
+
+            //seed some categories
+
+            // create unit tests.
+
+            //check task notes in case missed anything.
+
+            //go through and add coments and cleanup
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<bool> CreateNote(IndexViewModel model)
+        {
+            if (!ModelState.IsValid || model.Categories == null || !model.Categories.Any(x => x.Selected))
+            {
+                return false;
+            }
+
+            var categoryIds = model.Categories.Where(x => x.Selected).Select(x => int.Parse(x.Value)).ToList();
+
+            var result = await _notesApi.CreateNoteAsync(model.NoteText, categoryIds);
+
+            return result.Id > 0;
+        }
+
+        public async Task<PartialViewResult> GetNotesPartial()
+        {
+            var allNotes = (await _notesApi.GetAllNotesAsync());
+            var allCategories = await _notesApi.GetAllCategoriesAsync();
+
+            //Create partial view model 
+            var model = new List<NotePartialViewModel>();
+            foreach (var note in allNotes)
+            {
+                var categoryIds = note.NoteCategories.Select(y => y.CategoryId);
+
+                model.Add(new NotePartialViewModel
+                {
+                    Id = note.Id,
+                    DateCreated = note.DateCreated,
+                    NoteBody = note.NoteBody,
+                    NoteBodyHtml = note.NoteBodyHtml,
+                    Categories = allCategories.Where(x => categoryIds.Contains(x.Id))
+                                              .Select(x => new NoteCategoryPartialViewModel 
+                                                           { 
+                                                               CategoryName = x.CategoryName 
+                                                           })
+                                              .ToList()
+                });
+            }
+
+            return PartialView("_NotesPartial", model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

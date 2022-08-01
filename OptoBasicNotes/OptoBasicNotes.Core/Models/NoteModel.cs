@@ -18,6 +18,11 @@
         public string NoteBody { get; set; }
 
         /// <summary>
+        /// The main text of the note.  With markdown as html.
+        /// </summary>
+        public string NoteBodyHtml { get; set; }
+
+        /// <summary>
         /// The Not categories linking Notes and Categories
         /// </summary>
         public IEnumerable<NoteCategoryModel> NoteCategories { get; set; }
