@@ -107,7 +107,7 @@ namespace OptoBasicNotesApi.Controllers
                 NoteBody = createNoteDto.NoteBody
             };
 
-            //Must find the categories and create the NoteCategory entries to preemptivly save sql from producting errors.
+            //Must find the categories and create the NoteCategory entries to preemptivly save sql from producing errors.
             var categories = await _categoryService.FindByIdsAsync(createNoteDto.NoteCategoryIds);
             if (categories == null || categories.Count == 0 || categories.Count != createNoteDto.NoteCategoryIds.Count)
             {

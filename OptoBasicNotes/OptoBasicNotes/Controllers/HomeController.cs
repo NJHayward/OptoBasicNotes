@@ -30,7 +30,6 @@ namespace OptoBasicNotes.Controllers
 
 
 
-            //seed some categories
 
             // create unit tests.
 
@@ -73,7 +72,7 @@ namespace OptoBasicNotes.Controllers
                     Id = note.Id,
                     DateCreated = note.DateCreated,
                     NoteBody = note.NoteBody,
-                    NoteBodyHtml = note.NoteBodyHtml,
+                    NoteBodyHtml = protectAgainstScript(note.NoteBodyHtml),
                     Categories = allCategories.Where(x => categoryIds.Contains(x.Id))
                                               .Select(x => new NoteCategoryPartialViewModel 
                                                            { 
@@ -90,6 +89,11 @@ namespace OptoBasicNotes.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private string protectAgainstScript(string toProtect)
+        {
+            return toProtect.Replace("<script>", "&lt;script&gt;").Replace("</script>", "&lt;/script&gt;");
         }
     }
 }
