@@ -1,6 +1,6 @@
 ﻿namespace OptoBasicNotes.Core.Models.DTOs
 {
-    public class NoteDto
+    public class AllNotesItemDto
     {
         /// <summary>
         /// The identity id of the note
@@ -16,6 +16,11 @@
         /// The main text of the note.  Supports markdown.
         /// </summary>
         public string NoteBody { get; set; }
+
+        /// <summary>
+        /// The main text of the note.  With markdown as html.
+        /// </summary>
+        public string NoteBodyHtml { get; set; }
 
         /// <summary>
         /// The Not categories linking Notes and Categories

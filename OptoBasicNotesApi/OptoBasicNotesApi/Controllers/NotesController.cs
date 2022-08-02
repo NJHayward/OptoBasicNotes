@@ -34,16 +34,16 @@ namespace OptoBasicNotesApi.Controllers
         /// </summary>
         /// <returns>The list of note dtos</returns>
         [HttpGet]
-        public async Task<ActionResult<IList<NoteDto>>> GetAllNotes()
+        public async Task<ActionResult<IList<AllNotesItemDto>>> GetAllNotes()
         {
             var results = await _noteService.GetAllAsync();
             if (results == null || results.Count == 0)
             {
-                return Ok(new List<NoteDto>());
+                return Ok(new List<AllNotesItemDto>());
             }
 
             //Convert markdown here not in mapper as mapper would effect other calls.
-            var mappedResults = _mapper.Map<IList<NoteDto>>(results);
+            var mappedResults = _mapper.Map<IList<AllNotesItemDto>>(results);
             foreach (var mappedResult in mappedResults)
             {
                 mappedResult.NoteBodyHtml = Markdown.ToHtml(mappedResult.NoteBody);

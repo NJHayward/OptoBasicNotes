@@ -28,7 +28,7 @@ namespace OptoBasicNotes.Core.Interfaces
         /// Get all notes
         /// </summary>
         /// <returns>The list of note models</returns>
-        Task<IList<NoteModel>> GetAllNotesAsync();
+        Task<IList<AllNotesItemModel>> GetAllNotesAsync();
 
         /// <summary>
         /// Get note by the id parameter

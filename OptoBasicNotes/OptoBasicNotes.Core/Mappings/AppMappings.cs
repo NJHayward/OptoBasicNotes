@@ -11,6 +11,7 @@ namespace OptoBasicNotes.Core.Mappings
         /// </summary>
         public AppMappings()
         {
+            CreateMap<AllNotesItemDto, AllNotesItemModel>();
             CreateMap<NoteDto, NoteModel>();
             CreateMap<CategoryDto, CategoryModel>();
             CreateMap<NoteCategoryDto, NoteCategoryModel>();

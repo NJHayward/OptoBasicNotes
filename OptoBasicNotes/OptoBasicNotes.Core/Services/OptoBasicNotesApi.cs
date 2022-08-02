@@ -38,8 +38,8 @@ namespace OptoBasicNotes.Core.Services
 
         #region Notes 
 
-        public async Task<IList<NoteModel>> GetAllNotesAsync() =>
-            _mapper.Map<List<NoteModel>>(await ExecuteRequestAsync<List<NoteDto>>("/notes", Method.Get));
+        public async Task<IList<AllNotesItemModel>> GetAllNotesAsync() =>
+            _mapper.Map<List<AllNotesItemModel>>(await ExecuteRequestAsync<List<AllNotesItemDto>>("/notes", Method.Get));
 
         public async Task<NoteModel> GetNoteAsync(int id) =>
             _mapper.Map<NoteModel>(await ExecuteRequestAsync<NoteDto>($"/notes/{id}", Method.Get));

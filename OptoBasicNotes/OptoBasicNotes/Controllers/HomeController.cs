@@ -31,8 +31,6 @@ namespace OptoBasicNotes.Controllers
 
 
 
-            // create unit tests.
-
             //check task notes in case missed anything.
 
             //go through and add coments and cleanup

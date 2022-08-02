@@ -138,9 +138,9 @@ namespace OptoBasicNotes.UnitTests
                 }
             };
 
-            IList<NoteModel> noteModels = new List<NoteModel>()
+            IList<AllNotesItemModel> noteModels = new List<AllNotesItemModel>()
             {
-                new NoteModel
+                new AllNotesItemModel
                 {
                     Id = 1,
                     NoteBody = "mock note model 1 <script>alert('inject')</script>",
