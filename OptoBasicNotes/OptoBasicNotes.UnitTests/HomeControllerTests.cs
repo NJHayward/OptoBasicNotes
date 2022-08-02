@@ -12,6 +12,10 @@ namespace OptoBasicNotes.UnitTests
     [TestClass]
     public class HomeControllerTests
     {
+        /// <summary>
+        /// Index must build the category select list when initially loading the form
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task Index_Builds_SelectList()
         {
@@ -26,6 +30,10 @@ namespace OptoBasicNotes.UnitTests
             Assert.IsTrue(((indexResult as ViewResult)?.Model as IndexViewModel)?.Categories.Count == 3);
         }
 
+        /// <summary>
+        /// Must ensure CreateNot will not create a note when there is no NoteNext
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CreateNote_Doesnt_Create_On_Invalid_Model()
         {
@@ -50,7 +58,11 @@ namespace OptoBasicNotes.UnitTests
             //Assert
             Assert.IsFalse(result);
         }
-
+        
+        /// <summary>
+        /// Must ensure CreateNot will not create a note when no categories are selected
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CreateNote_Doesnt_Create_Without_Category()
         {
@@ -75,7 +87,10 @@ namespace OptoBasicNotes.UnitTests
             Assert.IsFalse(result);
         }
 
-
+        /// <summary>
+        /// Must ensure will all criteria met the note will be created
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task CreateNote_Does_Create_With_All_Valid()
         {
@@ -100,6 +115,10 @@ namespace OptoBasicNotes.UnitTests
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Must ensure that script tags are replaced to stop XSS.  Must also ensure that there are no script tags left int he case of multiple script tags.
+        /// </summary>
+        /// <returns></returns>
         [TestMethod]
         public async Task GetNotesPartial_Doesnt_Return_Html_With_Script()
         {
@@ -143,8 +162,8 @@ namespace OptoBasicNotes.UnitTests
                 new AllNotesItemModel
                 {
                     Id = 1,
-                    NoteBody = "mock note model 1 <script>alert('inject')</script>",
-                    NoteBodyHtml = "mock note model 1 <script>alert('inject')</script>",
+                    NoteBody = "mock note model 1 <script>alert('inject')</script><script>alert('inject 2')</script>",
+                    NoteBodyHtml = "mock note model 1 <script>alert('inject')</script><script>alert('inject 2')</script>",
                     DateCreated = DateTime.Now,
                     NoteCategories = new List<NoteCategoryModel>
                     {

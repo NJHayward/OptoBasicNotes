@@ -9,6 +9,13 @@ using RestSharp;
 
 namespace OptoBasicNotes.Core.Services
 {
+    /// <summary>
+    /// Api client class to connect to the OptoBAsicNotesApi
+    /// <br />
+    /// Note for nick : This may all look very familiar... but remember this is how i wrote this for communicado stuff and i stand by this way of implemtinging it!! :)
+    ///   Have taken the oppertunity to fully utilise the Async way and better handle json bodies.
+    /// <br />
+    /// </summary>
     public class OptoBasicNotesApi : IOptoBasicNotesApi
     {
         private readonly RestClient _restClient;
@@ -70,7 +77,7 @@ namespace OptoBasicNotes.Core.Services
         {
             var request = new RestRequest(requestUrl, method);
             
-            //some method require a json body.  so if this has been passed in put this int he body.
+            //some methods require a json body.  so if this has been passed in put this in the body.
             if (body != null)
                 request.AddJsonBody (body);
 

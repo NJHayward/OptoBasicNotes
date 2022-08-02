@@ -28,14 +28,6 @@ namespace OptoBasicNotes.Controllers
                 Text = x.CategoryName
             }).ToList();
 
-
-
-
-            //check task notes in case missed anything.
-
-            //go through and add coments and cleanup
-
-
             return View(model);
         }
 
@@ -59,7 +51,9 @@ namespace OptoBasicNotes.Controllers
             var allNotes = (await _notesApi.GetAllNotesAsync());
             var allCategories = await _notesApi.GetAllCategoriesAsync();
 
-            //Create partial view model 
+            //Create partial view model ensuring that we protect both NoteBody fields from script injection.
+            //  This must be both, we dont want to inadvertantly allow some XSS attacks here.
+            //   There are also unit tests in place for this to extra ensure this works as intended.
             var model = new List<NotePartialViewModel>();
             foreach (var note in allNotes)
             {
