@@ -12,7 +12,7 @@ using NLog.Web;
 using Microsoft.Extensions.Logging;
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-logger.Debug("init main");
+logger.Debug("Starting Application");
 
 try
 {

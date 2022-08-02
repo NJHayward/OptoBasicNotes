@@ -132,6 +132,10 @@ namespace OptoBasicNotesApi.Controllers
 
             await _noteService.CreateNote(note);
 
+            var noteId = note.Id;
+            if (noteId > 0)
+                _logger.LogInformation("CreateNote Audit - A note has been created.  Name = {noteId}", noteId);
+
             return Ok(_mapper.Map<NoteDto>(note));
         }
 
@@ -178,6 +182,9 @@ namespace OptoBasicNotesApi.Controllers
 
             await _noteService.Update(note);
 
+            var noteId = note.Id;
+            _logger.LogInformation("CreateNote Audit - A note has been updated.  Name = {noteId}", noteId);
+
             return Ok(true);
         }
 
@@ -198,6 +205,9 @@ namespace OptoBasicNotesApi.Controllers
             }
 
             await _noteService.Delete(note);
+
+            var noteId = note.Id;
+            _logger.LogInformation("CreateNote Audit - A note has been deleted.  Name = {noteId}", noteId);
 
             return Ok(true);
         }

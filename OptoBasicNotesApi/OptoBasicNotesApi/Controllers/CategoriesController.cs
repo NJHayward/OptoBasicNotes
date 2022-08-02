@@ -65,6 +65,8 @@ namespace OptoBasicNotesApi.Controllers
 
             await _categoryService.CreateCategoryAsync(category);
 
+            _logger.LogInformation("CreateCategory Audit - A category has been created.  Name = {name}", category.CategoryName);
+
             return Ok(_mapper.Map<CategoryDto>(category));
         }
     }
