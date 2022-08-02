@@ -65,6 +65,8 @@ namespace OptoBasicNotesApi.Controllers
 
             await _categoryService.CreateCategoryAsync(category);
 
+            //Usually would log audit entries to the database.  However the spec says create audit logs via the .net logging framework.
+            // so it is done in a very base way here.
             _logger.LogInformation("CreateCategory Audit - A category has been created.  Name = {name}", category.CategoryName);
 
             return Ok(_mapper.Map<CategoryDto>(category));

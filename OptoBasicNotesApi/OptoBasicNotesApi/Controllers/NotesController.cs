@@ -42,12 +42,10 @@ namespace OptoBasicNotesApi.Controllers
                 return Ok(new List<AllNotesItemDto>());
             }
 
-            //Convert markdown here not in mapper as mapper would effect other calls.
+            //Mapper will also convert markdown ready for the callers to use without having to make extra calls for individual 
+            // notes.   usefull when displaying a list of the notes that display the content.  This is also why we use a seperate
+            // dto here with an extra field NoteBodyHtml
             var mappedResults = _mapper.Map<IList<AllNotesItemDto>>(results);
-            foreach (var mappedResult in mappedResults)
-            {
-                mappedResult.NoteBodyHtml = Markdown.ToHtml(mappedResult.NoteBody);
-            }
 
             return Ok(mappedResults);
         }
@@ -107,7 +105,7 @@ namespace OptoBasicNotesApi.Controllers
                 NoteBody = createNoteDto.NoteBody
             };
 
-            //Must find the categories and create the NoteCategory entries to preemptivly save sql from producing errors.
+            //Must ensure categories exist to pre-emptivly save sql from producing errors.
             var categories = await _categoryService.FindByIdsAsync(createNoteDto.NoteCategoryIds);
             if (categories == null || categories.Count == 0 || categories.Count != createNoteDto.NoteCategoryIds.Count)
             {
@@ -132,6 +130,8 @@ namespace OptoBasicNotesApi.Controllers
 
             await _noteService.CreateNote(note);
 
+            //Usually would log audit entries to the database.  However the spec says create audit logs via the .net logging framework.
+            // so it is done in a very base way here.
             var noteId = note.Id;
             if (noteId > 0)
                 _logger.LogInformation("CreateNote Audit - A note has been created.  Name = {noteId}", noteId);
@@ -156,6 +156,7 @@ namespace OptoBasicNotesApi.Controllers
                 return BadRequest("Note does not exist");
             }
 
+            //Must ensure categories exist to preemptivly save sql from producing errors.
             var categories = await _categoryService.FindByIdsAsync(noteDto.NoteCategoryIds);
             if (categories == null || categories.Count == 0 || categories.Count != noteDto.NoteCategoryIds.Count())
             {
@@ -182,6 +183,8 @@ namespace OptoBasicNotesApi.Controllers
 
             await _noteService.Update(note);
 
+            //Usually would log audit entries to the database.  However the spec says create audit logs via the .net logging framework.
+            // so it is done in a very base way here.
             var noteId = note.Id;
             _logger.LogInformation("CreateNote Audit - A note has been updated.  Name = {noteId}", noteId);
 
@@ -206,6 +209,8 @@ namespace OptoBasicNotesApi.Controllers
 
             await _noteService.Delete(note);
 
+            //Usually would log audit entries to the database.  However the spec says create audit logs via the .net logging framework.
+            // so it is done in a very base way here.
             var noteId = note.Id;
             _logger.LogInformation("CreateNote Audit - A note has been deleted.  Name = {noteId}", noteId);
 
