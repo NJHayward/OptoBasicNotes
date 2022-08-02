@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     loadPartial();
 
+    //Toggle the Create form
     $('#btnShowCreateNote').click(function () {
         hideSuccessCreated();
 
@@ -14,11 +15,14 @@
         }
     });
 
+    //hide manual category checking when selecting a category
     $('.catCheck').change(function () {
         removeCategoryError();
     });
 
+    //Create a note with ajax with ModelBinding!
     $('#btnCreateNote').click(function () {
+        //manual check of category selection.
         var finishedLooking = false;
         var somethingSelected = false;
         var i = 0;
@@ -41,6 +45,8 @@
             showCategoryError();
         }
 
+        //validate the form with standart unobstrusive jquery validation and submit
+        //  the form to the action to be modelbinded
         if ($("#createNoteForm").valid() && somethingSelected) {
             var data = $('#createNoteForm').serialize();
 

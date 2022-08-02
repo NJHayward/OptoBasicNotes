@@ -57,6 +57,29 @@ namespace OptoBasicNotesApi.Core
                     CategoryName = "Some category 5"
                 }
             );
+
+            builder.Entity<Note>().HasData(
+                new Note
+                {
+                    Id = 1,
+                    NoteBody = "## My Seeded Note \n With a test script <script>alert('inject')</script>"
+                }
+            );
+
+            builder.Entity<NoteCategory>().HasData(
+                new NoteCategory
+                {
+                    Id = 1,
+                    NoteId = 1,
+                    CategoryId = 1
+                },
+                new NoteCategory
+                {
+                    Id = 2,
+                    NoteId = 1,
+                    CategoryId = 2
+                }
+            );
         }
     }
 }

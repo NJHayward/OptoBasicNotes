@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OptoBasicNotesApi.Core;
 
@@ -11,9 +12,10 @@ using OptoBasicNotesApi.Core;
 namespace OptoBasicNotesApi.Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220802203703_moreSeeding")]
+    partial class moreSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,7 +97,7 @@ namespace OptoBasicNotesApi.Core.Migrations
                         {
                             Id = 1,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NoteBody = "## My Seeded Note \n With a test script <script>alert('inject')</script>"
+                            NoteBody = "## My Seeded Note <br /> With a test script <script>alert('inject')</script>"
                         });
                 });
 
