@@ -71,7 +71,7 @@ namespace OptoBasicNotes.Controllers
                 {
                     Id = note.Id,
                     DateCreated = note.DateCreated,
-                    NoteBody = note.NoteBody,
+                    NoteBody = protectAgainstScript(note.NoteBody),
                     NoteBodyHtml = protectAgainstScript(note.NoteBodyHtml),
                     Categories = allCategories.Where(x => categoryIds.Contains(x.Id))
                                               .Select(x => new NoteCategoryPartialViewModel 
