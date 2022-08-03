@@ -51,7 +51,8 @@ namespace OptoBasicNotes.Controllers
             var allNotes = (await _notesApi.GetAllNotesAsync());
             var allCategories = await _notesApi.GetAllCategoriesAsync();
 
-            //Create partial view model ensuring that we protect both NoteBody fields from script injection.
+            //Even thought the content from the api service is html encoded.. we must Create partial view model 
+            //  ensuring that we protect both NoteBody fields from script injection.
             //  This must be both, we dont want to inadvertantly allow some XSS attacks here.
             //   There are also unit tests in place for this to extra ensure this works as intended.
             var model = new List<NotePartialViewModel>();

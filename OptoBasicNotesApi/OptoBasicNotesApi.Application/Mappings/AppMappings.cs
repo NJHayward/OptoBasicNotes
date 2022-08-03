@@ -2,6 +2,7 @@
 using Markdig;
 using OptoBasicNotesApi.Application.DTOs;
 using OptoBasicNotesApi.Core.Models;
+using System.Web;
 
 namespace OptoBasicNotesApi.Application.Mappings
 {
@@ -15,7 +16,7 @@ namespace OptoBasicNotesApi.Application.Mappings
             CreateMap<Note, NoteDto>();
 
             CreateMap<Note, AllNotesItemDto>()
-                .ForMember(dto => dto.NoteBodyHtml, opt => opt.MapFrom(mdl => Markdown.ToHtml(mdl.NoteBody, null, null)));
+                .ForMember(dto => dto.NoteBodyHtml, opt => opt.MapFrom(mdl => Markdown.ToHtml(HttpUtility.HtmlEncode(mdl.NoteBody), null, null)));
 
             CreateMap<Category, CategoryDto>();
 

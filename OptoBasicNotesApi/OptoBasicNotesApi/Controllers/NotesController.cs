@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace OptoBasicNotesApi.Controllers
 {
@@ -86,7 +87,7 @@ namespace OptoBasicNotesApi.Controllers
             }
 
             //Using Markdig we can convert the markdown to html automatically.
-            note.NoteBody = Markdown.ToHtml(note.NoteBody);
+            note.NoteBody = Markdown.ToHtml(HttpUtility.HtmlEncode(note.NoteBody));
 
             return Ok(_mapper.Map<NoteDto>(note));
         }
