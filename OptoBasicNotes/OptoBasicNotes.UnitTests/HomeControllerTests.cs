@@ -178,13 +178,13 @@ namespace OptoBasicNotes.UnitTests
             };
 
             var mockNotesApi = new Mock<IOptoBasicNotesApi>();
-            mockNotesApi.Setup(m => m.GetAllCategoriesAsync()).Returns(Task.FromResult(categoryModels));
-            mockNotesApi.Setup(m => m.CreateNoteAsync(It.IsAny<string>(), It.IsAny<IList<int>>())).Returns(Task.FromResult(new NoteModel
+            mockNotesApi.Setup(m => m.GetAllCategoriesAsync()).ReturnsAsync(categoryModels);
+            mockNotesApi.Setup(m => m.CreateNoteAsync(It.IsAny<string>(), It.IsAny<IList<int>>())).ReturnsAsync(new NoteModel
             {
                 Id = 1
-            }));
+            });
 
-            mockNotesApi.Setup(m => m.GetAllNotesAsync()).Returns(Task.FromResult(noteModels));
+            mockNotesApi.Setup(m => m.GetAllNotesAsync()).ReturnsAsync(noteModels);
 
             return mockNotesApi;
         }
