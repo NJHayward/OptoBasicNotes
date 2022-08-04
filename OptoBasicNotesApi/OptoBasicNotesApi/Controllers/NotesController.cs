@@ -166,6 +166,7 @@ namespace OptoBasicNotesApi.Controllers
                 {
                     idsStr.Append(" " + cid.ToString());
                 }
+
                 _logger.LogWarning("UpdateNote - update attempted with category ids that do not exist. id ={idsStr}", idsStr);
 
                 return BadRequest("One or more categories does not exist");
