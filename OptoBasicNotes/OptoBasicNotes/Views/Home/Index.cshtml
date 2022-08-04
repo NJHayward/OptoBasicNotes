@@ -3,48 +3,46 @@
     ViewData["Title"] = "Basic Page";
 }
 
-<div>
-    <h1 class="display-4">Basic Notes</h1>
-    <p>Welcome to the basic note system!</p>
-    <div class="alert alert-danger text-center" role="alert" id="divErrorPanel">
-        An error has occurred, please try again layer.
-    </div>
-    <div class="alert alert-success text-center" role="alert" id="divSuccessCreated">
-        Note has been created successfully!
-    </div>
-    <div class="col-md-12 bg-light">
-        <button id="btnShowCreateNote" class="btn btn-primary" style="float:right">Create Note</button>
-    </div>
-    <div style="clear:both"></div>
-    <div id="btnCreateNoteForm" class="collapse bg-light text-center">
-        <form method="post" id="createNoteForm">
-            <div class="createRow">
-                <label asp-for="Categories" style="display:block;font-weight:700;"></label>
-                @for (int i = 0; i < Model.Categories.Count; i++)
-                {
-                    <input type="checkbox" asp-for="Categories[i].Selected" id="category-@i" class="catCheck" />
-                    <input type="hidden" asp-for="Categories[i].Text" />
-                    <input type="hidden" asp-for="Categories[i].Value" />
-                    @:&nbsp;
-                    <label for="category-@i">@Model.Categories[i].Text</label>
-                    <br />
-                }
-                <span id="divCategoryErrorPanel" class="text-danger" style="display:none;">One or more category is required</span>
-            </div>
-            <div class="createRow">
-                <label asp-for="NoteText" style="display:block;font-weight:700;"></label>
-                <textarea type="text" asp-for="NoteText"
-                          title = "Enter note here..."
-                          class = "ml-auto mr-auto"
-                          style = "width:70%; height:400px;"></textarea>
-                <span asp-validation-for="NoteText" class="text-danger d-block"></span>
-            </div>
-            <div class="createRow">
-                <input type="button" id="btnCreateNote" class="btn btn-success" value="Create" />
-            </div>
-        </form>
-    </div>
-    <div class="col-md-12">
-        <div id="divNotesPartial"></div>
-    </div>
+<h1 class="display-4">Basic Notes</h1>
+<p>Welcome to the basic note system!</p>
+<div class="alert alert-danger text-center" role="alert" id="divErrorPanel">
+    An error has occurred, please try again layer.
+</div>
+<div class="alert alert-success text-center" role="alert" id="divSuccessCreated">
+    Note has been created successfully!
+</div>
+<div class="col-md-12 bg-light">
+    <button id="btnShowCreateNote" class="btn btn-primary" style="float:right">Create Note</button>
+</div>
+<div style="clear:both"></div>
+<div id="btnCreateNoteForm" class="collapse bg-light text-center">
+    <form method="post" id="createNoteForm">
+        <div class="createRow">
+            <label asp-for="Categories" style="display:block;font-weight:700;"></label>
+            @for (int i = 0; i < Model.Categories.Count; i++)
+            {
+                <input type="checkbox" asp-for="Categories[i].Selected" id="category-@i" class="catCheck" />
+                <input type="hidden" asp-for="Categories[i].Text" />
+                <input type="hidden" asp-for="Categories[i].Value" />
+                @:&nbsp;
+                <label for="category-@i">@Model.Categories[i].Text</label>
+                <br />
+            }
+            <span id="divCategoryErrorPanel" class="text-danger" style="display:none;">One or more category is required</span>
+        </div>
+        <div class="createRow">
+            <label asp-for="NoteText" style="display:block;font-weight:700;"></label>
+            <textarea type="text" asp-for="NoteText"
+                        title = "Enter note here..."
+                        class = "ml-auto mr-auto"
+                        style = "width:70%; height:400px;"></textarea>
+            <span asp-validation-for="NoteText" class="text-danger d-block"></span>
+        </div>
+        <div class="createRow">
+            <input type="button" id="btnCreateNote" class="btn btn-success" value="Create" />
+        </div>
+    </form>
+</div>
+<div class="col-md-12">
+    <div id="divNotesPartial"></div>
 </div>

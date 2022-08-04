@@ -8,7 +8,7 @@
         public int Id { get; set; }
 
         /// <summary>
-        /// The date/TIme the note was created
+        /// The date/Time the note was created
         /// </summary>
         public DateTime DateCreated { get; set; }
 
@@ -23,7 +23,7 @@
         public string NoteBodyHtml { get; set; }
 
         /// <summary>
-        /// The Not categories linking Notes and Categories
+        /// The Note categories linking Notes and Categories
         /// </summary>
         public IList<NoteCategoryPartialViewModel> Categories { get; set; }
     }
@@ -31,7 +31,7 @@
     public class NoteCategoryPartialViewModel
     {
         /// <summary>
-        /// The category name
+        /// The category name to display
         /// </summary>
         public string CategoryName { get; set; }
     }
